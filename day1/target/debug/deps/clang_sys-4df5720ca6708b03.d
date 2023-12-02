@@ -1,0 +1,14 @@
+/Users/JWATKDK/Developer/advent-of-code/day1/target/debug/deps/clang_sys-4df5720ca6708b03.rmeta: /Users/JWATKDK/.cargo/registry/src/index.crates.io-6f17d22bba15001f/clang-sys-1.6.1/src/lib.rs /Users/JWATKDK/.cargo/registry/src/index.crates.io-6f17d22bba15001f/clang-sys-1.6.1/src/support.rs /Users/JWATKDK/.cargo/registry/src/index.crates.io-6f17d22bba15001f/clang-sys-1.6.1/src/link.rs /Users/JWATKDK/Developer/advent-of-code/day1/target/debug/build/clang-sys-5093d8e183c41796/out/macros.rs /Users/JWATKDK/Developer/advent-of-code/day1/target/debug/build/clang-sys-5093d8e183c41796/out/common.rs /Users/JWATKDK/Developer/advent-of-code/day1/target/debug/build/clang-sys-5093d8e183c41796/out/dynamic.rs
+
+/Users/JWATKDK/Developer/advent-of-code/day1/target/debug/deps/libclang_sys-4df5720ca6708b03.rlib: /Users/JWATKDK/.cargo/registry/src/index.crates.io-6f17d22bba15001f/clang-sys-1.6.1/src/lib.rs /Users/JWATKDK/.cargo/registry/src/index.crates.io-6f17d22bba15001f/clang-sys-1.6.1/src/support.rs /Users/JWATKDK/.cargo/registry/src/index.crates.io-6f17d22bba15001f/clang-sys-1.6.1/src/link.rs /Users/JWATKDK/Developer/advent-of-code/day1/target/debug/build/clang-sys-5093d8e183c41796/out/macros.rs /Users/JWATKDK/Developer/advent-of-code/day1/target/debug/build/clang-sys-5093d8e183c41796/out/common.rs /Users/JWATKDK/Developer/advent-of-code/day1/target/debug/build/clang-sys-5093d8e183c41796/out/dynamic.rs
+
+/Users/JWATKDK/Developer/advent-of-code/day1/target/debug/deps/clang_sys-4df5720ca6708b03.d: /Users/JWATKDK/.cargo/registry/src/index.crates.io-6f17d22bba15001f/clang-sys-1.6.1/src/lib.rs /Users/JWATKDK/.cargo/registry/src/index.crates.io-6f17d22bba15001f/clang-sys-1.6.1/src/support.rs /Users/JWATKDK/.cargo/registry/src/index.crates.io-6f17d22bba15001f/clang-sys-1.6.1/src/link.rs /Users/JWATKDK/Developer/advent-of-code/day1/target/debug/build/clang-sys-5093d8e183c41796/out/macros.rs /Users/JWATKDK/Developer/advent-of-code/day1/target/debug/build/clang-sys-5093d8e183c41796/out/common.rs /Users/JWATKDK/Developer/advent-of-code/day1/target/debug/build/clang-sys-5093d8e183c41796/out/dynamic.rs
+
+/Users/JWATKDK/.cargo/registry/src/index.crates.io-6f17d22bba15001f/clang-sys-1.6.1/src/lib.rs:
+/Users/JWATKDK/.cargo/registry/src/index.crates.io-6f17d22bba15001f/clang-sys-1.6.1/src/support.rs:
+/Users/JWATKDK/.cargo/registry/src/index.crates.io-6f17d22bba15001f/clang-sys-1.6.1/src/link.rs:
+/Users/JWATKDK/Developer/advent-of-code/day1/target/debug/build/clang-sys-5093d8e183c41796/out/macros.rs:
+/Users/JWATKDK/Developer/advent-of-code/day1/target/debug/build/clang-sys-5093d8e183c41796/out/common.rs:
+/Users/JWATKDK/Developer/advent-of-code/day1/target/debug/build/clang-sys-5093d8e183c41796/out/dynamic.rs:
+
+# env-dep:OUT_DIR=/Users/JWATKDK/Developer/advent-of-code/day1/target/debug/build/clang-sys-5093d8e183c41796/out
