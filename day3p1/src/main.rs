@@ -51,9 +51,7 @@ fn check_for_number(map: &Vec<Vec<char>>, i: usize, j: &mut usize, starting_char
                     break;
                 }
             }
-        } else if !num_str.is_empty() {
-            break;
-        }
+        } else { break; }
         j2 += 1;
     }
     (include, num_str)
