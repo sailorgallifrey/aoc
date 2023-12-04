@@ -63,6 +63,8 @@ fn get_map(data: String) -> Vec<Vec<char>> {
         .collect()
 }
 
+// Could have just made this loop and look for adjacent stuff
+// with some min/max thresholds, but I stared one way and just went with it lol :)
 fn get_queens_case(i: usize, j: usize, w: usize, h: usize) -> Vec<(usize, usize)> {
     let mut window: Vec<(usize, usize)> = vec![];
 
