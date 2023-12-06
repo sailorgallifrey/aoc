@@ -76,8 +76,7 @@ fn get_result(seeds: Vec<u64>, map: HashMap<String, Vec<Vec<u64>>>) -> u64 {
 
 fn get_value(lookup: &u64, map: &Vec<Vec<u64>>) -> u64 {
     for m in map {
-        let last = m[1] + m[2];
-        if *lookup >= m[1] && *lookup < last {
+        if *lookup >= m[1] && *lookup < m[1] + m[2] {
             return m[0] + (*lookup - m[1])
         }
     }
