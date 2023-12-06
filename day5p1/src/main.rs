@@ -49,22 +49,22 @@ fn get_maps(lines: Vec<&str>) -> HashMap<String, Vec<Vec<u64>>> {
 
 fn get_result(seeds: Vec<u64>, map: HashMap<String, Vec<Vec<u64>>>) -> u64 {
     let mut lowest_location: u64 = u64::MAX;
-    let seed_map = &map["seed-to-soil"];
-    let soil_map = &map["soil-to-fertilizer"];
-    let fert_map = &map["fertilizer-to-water"];
-    let water_map = &map["water-to-light"];
-    let light_map = &map["light-to-temperature"];
-    let temp_map = &map["temperature-to-humidity"];
-    let humid_map = &map["humidity-to-location"];
+    let soil_map = &map["seed-to-soil"];
+    let fert_map = &map["soil-to-fertilizer"];
+    let water_map = &map["fertilizer-to-water"];
+    let light_map = &map["water-to-light"];
+    let temp_map = &map["light-to-temperature"];
+    let humid_map = &map["temperature-to-humidity"];
+    let loc_map = &map["humidity-to-location"];
 
     for seed in seeds {
-        let soil: u64 = get_value(&seed, seed_map);
-        let fertilizer: u64 = get_value(&soil, soil_map);
-        let water: u64 = get_value(&fertilizer, fert_map);
-        let light: u64 = get_value(&water, water_map);
-        let temp: u64 = get_value(&light, light_map);
-        let humid: u64 = get_value(&temp, temp_map);
-        let location: u64 = get_value(&humid, humid_map);
+        let soil: u64 = get_value(&seed, soil_map);
+        let fertilizer: u64 = get_value(&soil, fert_map);
+        let water: u64 = get_value(&fertilizer, water_map);
+        let light: u64 = get_value(&water, light_map);
+        let temp: u64 = get_value(&light, temp_map);
+        let humid: u64 = get_value(&temp, humid_map);
+        let location: u64 = get_value(&humid, loc_map);
 
         if lowest_location > location {
             lowest_location = location.to_owned()
@@ -77,7 +77,7 @@ fn get_result(seeds: Vec<u64>, map: HashMap<String, Vec<Vec<u64>>>) -> u64 {
 fn get_value(lookup: &u64, map: &Vec<Vec<u64>>) -> u64 {
     for m in map {
         let last = m[1] + m[2];
-        if *lookup >= m[1] && *lookup <= last {
+        if *lookup >= m[1] && *lookup < last {
             return m[0] + (*lookup - m[1])
         }
     }
