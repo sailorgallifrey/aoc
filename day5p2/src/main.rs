@@ -2,7 +2,7 @@ use std::collections::HashMap;
 use std::fs;
 
 fn main() {
-    let file = fs::read_to_string("./data-test.txt").expect("Couldn't read file.");
+    let file = fs::read_to_string("./data.txt").expect("Couldn't read file.");
     let lines: Vec<&str> = file.lines().collect();
 
     let seed_ranges: Vec<Vec<u64>> = get_seeds(lines.first().unwrap());
