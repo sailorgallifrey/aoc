@@ -136,9 +136,9 @@ fn get_score(h: &Hand) -> u8 {
                 if h.j_cards == 0 {
                     7
                 } else if h.j_cards == 1 {
-                    9
+                    9 // Same as 4 of kind
                 } else if h.j_cards == 2 {
-                    10
+                    10 // Same as 5
                 } else {
                     panic!("shouldn't get here")
                 }
@@ -150,7 +150,7 @@ fn get_score(h: &Hand) -> u8 {
                 if h.j_cards == 0 {
                     6
                 } else if h.j_cards == 1 {
-                    8
+                    8 // Same as Full house
                 } else {
                     panic!("shouldn't get here")
                 }
@@ -159,11 +159,11 @@ fn get_score(h: &Hand) -> u8 {
                 if h.j_cards == 0 {
                     5
                 } else if h.j_cards == 1 {
-                    7
+                    7 // pair
                 } else if h.j_cards == 2 {
-                    9
+                    9 // 4 of kind
                 } else if h.j_cards == 3 {
-                    10
+                    10 // 5 of kind
                 } else {
                     panic!("shouldn't get here")
                 }
