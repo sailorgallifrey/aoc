@@ -88,14 +88,14 @@ fn least_common_multiple(mut n: Vec<u64>) -> u64 {
 
     let a = n.remove(0);
     let b = least_common_multiple(n);
-    a * b / greatest_common_denom(a, b)
+    a * b / greatest_common_devisor(a, b)
 }
 
-fn greatest_common_denom(a: u64, b: u64) -> u64 {
+fn greatest_common_devisor(a: u64, b: u64) -> u64 {
     if b == 0 {
         return a;
     }
-    greatest_common_denom(b, a % b)
+    greatest_common_devisor(b, a % b)
 }
 
 fn get_count(loc: &Location, problem: &Problem) -> u64 {
