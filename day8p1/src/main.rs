@@ -1,7 +1,7 @@
 use std::collections::HashMap;
 use std::fs;
 
-#[derive(Hash, Eq, PartialEq, Clone)]
+#[derive(Hash, Clone, Eq, PartialEq)]
 enum Direction {
     L,
     R,
@@ -17,7 +17,7 @@ impl From<char> for Direction {
     }
 }
 
-#[derive(Clone, Eq, PartialEq)]
+#[derive(Clone)]
 struct Location {
     address: Box<str>,
     destinations: HashMap<Direction, Box<str>>,
