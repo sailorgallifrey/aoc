@@ -28,7 +28,7 @@ struct Coord {
 }
 
 fn main() {
-    let data = fs::read_to_string("./dataZ.txt").expect("Couldn't read file.");
+    let data = fs::read_to_string("./data.txt").expect("Couldn't read file.");
 
     let map: Vec<Vec<Type>> = get_map(data);
     let expanded: Vec<Vec<Type>> = expand_map(&map);
