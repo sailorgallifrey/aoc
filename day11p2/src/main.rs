@@ -40,13 +40,35 @@ fn main() {
     let mut visited: Vec<u32> = vec![];
 
     for g1 in &galaxies {
-        print!("\r{}    ", g1.id);
-        std::io::stdout().flush();
         for g2 in &galaxies {
             if g1.i == g2.i && g1.j == g2.j || visited.contains(&g2.id) {
                 continue;
             }
-            total += ((g1.i as i64 - g2.i as i64).abs() + (g1.j as i64 - g2.j as i64).abs()) as u64;
+
+            let mut i_tot: u64 = 0;
+            let mut j_tot: u64 = 0;
+
+            let (start_i, end_i) = if g1.i < g2.i { (g1.i, g2.i) } else { (g2.i, g1.i) };
+
+            for i in start_i..end_i {
+                if expanded[i][0] == Expanded {
+                    i_tot += 1000000;
+                } else {
+                    i_tot += 1
+                }
+            }
+
+            let (start_j, end_j) = if g1.j < g2.j { (g1.j, g2.j) } else { (g2.j, g1.j) };
+
+            for j in start_j..end_j {
+                if expanded[0][j] == Expanded {
+                    j_tot += 1000000;
+                } else {
+                    j_tot += 1
+                }
+            }
+
+            total += (i_tot + j_tot) as u64;
             pair_count += 1;
         }
         visited.push(g1.id);
@@ -67,7 +89,7 @@ fn expand_map(map: &Vec<Vec<Type>>) -> Vec<Vec<Type>> {
 
     for i in 0..map.len() {
         if map[i].iter().all(|j| j == &Empty) {
-            result_i.push(vec![Expanded, map[i].len()])
+            result_i.push(vec![Expanded; map[i].len()])
         } else {
             result_i.push(map[i].clone());
         }
@@ -76,8 +98,8 @@ fn expand_map(map: &Vec<Vec<Type>>) -> Vec<Vec<Type>> {
     result_i = transpose2(result_i);
 
     for i in 0..result_i.len() {
-        if result_i[i].iter().all(|j| j == &Empty) {
-            result_i.push(vec![Expanded, result_i[i].len()])
+        if result_i[i].iter().all(|j| j == &Empty || j == &Expanded) {
+            result.push(vec![Expanded; result_i[i].len()])
         } else {
             result.push(result_i[i].clone());
         }
