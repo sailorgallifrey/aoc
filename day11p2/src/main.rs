@@ -1,5 +1,5 @@
+use crate::Type::{Empty, Expanded, Galaxy};
 use std::collections::HashMap;
-use crate::Type::{Empty, Galaxy};
 use std::f32::consts::E;
 use std::fs;
 use std::io::Write;
@@ -8,6 +8,7 @@ use std::io::Write;
 enum Type {
     Galaxy,
     Empty,
+    Expanded,
 }
 
 impl From<char> for Type {
@@ -28,7 +29,7 @@ struct Coord {
 }
 
 fn main() {
-    let data = fs::read_to_string("./dataZ.txt").expect("Couldn't read file.");
+    let data = fs::read_to_string("./data.txt").expect("Couldn't read file.");
 
     let map: Vec<Vec<Type>> = get_map(data);
     let expanded: Vec<Vec<Type>> = expand_map(&map);
@@ -39,10 +40,10 @@ fn main() {
     let mut visited: Vec<u32> = vec![];
 
     for g1 in &galaxies {
+        print!("\r{}    ", g1.id);
+        std::io::stdout().flush();
         for g2 in &galaxies {
-            if g1.i == g2.i && g1.j == g2.j
-                || visited.contains(&g2.id)
-            {
+            if g1.i == g2.i && g1.j == g2.j || visited.contains(&g2.id) {
                 continue;
             }
             total += ((g1.i as i64 - g2.i as i64).abs() + (g1.j as i64 - g2.j as i64).abs()) as u64;
@@ -66,8 +67,7 @@ fn expand_map(map: &Vec<Vec<Type>>) -> Vec<Vec<Type>> {
 
     for i in 0..map.len() {
         if map[i].iter().all(|j| j == &Empty) {
-            result_i.push(map[i].clone());
-            result_i.push(map[i].clone());
+            result_i.push(vec![Expanded, map[i].len()])
         } else {
             result_i.push(map[i].clone());
         }
@@ -77,8 +77,7 @@ fn expand_map(map: &Vec<Vec<Type>>) -> Vec<Vec<Type>> {
 
     for i in 0..result_i.len() {
         if result_i[i].iter().all(|j| j == &Empty) {
-            result.push(result_i[i].clone());
-            result.push(result_i[i].clone());
+            result_i.push(vec![Expanded, result_i[i].len()])
         } else {
             result.push(result_i[i].clone());
         }
