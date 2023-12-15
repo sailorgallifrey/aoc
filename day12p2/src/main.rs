@@ -91,21 +91,21 @@ fn get_result(groups: Vec<u8>, springs: Vec<Status>) -> u64 {
     let next_group = groups[0];
 
     if next_status == Working {
-        return working(groups.clone(), springs) // Next status is working and can act as a separator so we keep going
+        return working(&groups, &springs) // Next status is working and can act as a separator so we keep going
     } else if next_status == Broken {
         // Ooo we found some broken springs check if they match the next group
-        return broken(groups.clone(), springs.clone(), next_group)
+        return broken(&groups, &springs, next_group)
     } else {
         // Ooo wildcard (See if it helps us match the next group or keep going assuming the wildcard is a separator and sum the two)
-        return working(groups.clone(), springs.clone()) + broken(groups.clone(), springs.clone(), next_group);
+        return working(&groups, &springs) + broken(&groups, &springs, next_group);
     }
 }
 
-fn working(groups: Vec<u8>, springs: Vec<Status>) -> u64 {
-    get_result(groups, springs[1..].to_vec())
+fn working(groups: &Vec<u8>, springs: &Vec<Status>) -> u64 {
+    get_result(groups.clone(), springs[1..].to_vec())
 }
 
-fn broken(groups: Vec<u8>, springs: Vec<Status>, next_group: u8) -> u64 {
+fn broken(groups: &Vec<u8>, springs: &Vec<Status>, next_group: u8) -> u64 {
     let mut current_group: Vec<Status> = if springs.len() < next_group as usize
     {
         springs.clone()
