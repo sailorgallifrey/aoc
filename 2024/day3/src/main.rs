@@ -1,6 +1,6 @@
 use regex::Regex;
 use std::time::Instant;
-use std::{fs, isize};
+use std::fs;
 
 fn main() {
     let data = fs::read_to_string("./input.txt").expect("Couldn't read file.");
@@ -14,11 +14,11 @@ fn main() {
     println!("Elapsed time: {:.2?}", before.elapsed());
 }
 
-fn problem2(data: &String) {
+fn problem2(data: &str) {
     let re = Regex::new(r"mul\(\d+,\d+\)|don't\(\)|do\(\)").unwrap();
     let mut total: isize = 0;
     let mut include: bool = true;
-    re.find_iter(data.as_str()).for_each(|m| match m.as_str() {
+    re.find_iter(data).for_each(|m| match m.as_str() {
         "don't()" => {
             include = false;
         }
@@ -41,10 +41,10 @@ fn problem2(data: &String) {
     println!("{:?}", total);
 }
 
-fn problem1(data: &String) {
+fn problem1(data: &str) {
     let re = Regex::new(r"mul\(\d+,\d+\)").unwrap();
     let r: isize = re
-        .find_iter(data.as_str())
+        .find_iter(data)
         .map(|m| {
             let nums: Vec<isize> = m
                 .as_str()

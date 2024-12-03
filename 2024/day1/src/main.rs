@@ -1,39 +1,39 @@
-use std::{fs, i32};
+use std::fs;
 
 fn main() {
     let data = fs::read_to_string("./input.txt").expect("Couldn't read file.");
-    let (a, b): (Vec<i32>, Vec<i32>) = parse_data(data);
+    let (a, b): (Vec<isize>, Vec<isize>) = parse_data(data);
 
     problem1(&a, &b);
     problem2(&a, &b);
 }
 
-fn problem2(a: &Vec<i32>, b: &Vec<i32>) {
-    let r: i32 = a.iter().fold(0i32, |r, v| r + (v * count_occurances(v, b)));
+fn problem2(a: &[isize], b: &[isize]) {
+    let r: isize = a.iter().fold(0isize, |r, v| r + (v * count_occurances(v, b)));
 
     println!("{:?}", r)
 }
 
-fn count_occurances(v: &i32, b: &Vec<i32>) -> i32 {
-    b.iter().filter(|&v1| *v1 == *v).count() as i32
+fn count_occurances(v: &isize, b: &[isize]) -> isize {
+    b.iter().filter(|&v1| *v1 == *v).count() as isize
 }
 
-fn problem1(a: &Vec<i32>, b: &Vec<i32>) {
-    let r: i32 = a
+fn problem1(a: &[isize], b: &[isize]) {
+    let r: isize = a
         .iter()
         .enumerate()
-        .fold(0i32, |r, (i, v)| r + (v - b[i]).abs());
+        .fold(0isize, |r, (i, v)| r + (v - b[i]).abs());
 
     println!("{:?}", r)
 }
 
-fn parse_data(data: String) -> (Vec<i32>, Vec<i32>) {
+fn parse_data(data: String) -> (Vec<isize>, Vec<isize>) {
     let mut a = Vec::new();
     let mut b = Vec::new();
     data.lines().for_each(|l| {
-        let d: Vec<i32> = l
+        let d: Vec<isize> = l
             .split_whitespace()
-            .map(|s| s.parse::<i32>().unwrap())
+            .map(|s| s.parse::<isize>().unwrap())
             .collect();
         a.push(d[0]);
         b.push(d[1]);
