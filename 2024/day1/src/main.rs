@@ -9,12 +9,12 @@ fn main() {
 }
 
 fn problem2(a: &[isize], b: &[isize]) {
-    let r: isize = a.iter().fold(0isize, |r, v| r + (v * count_occurances(v, b)));
+    let r: isize = a.iter().fold(0isize, |r, v| r + (v * count_occurrences(v, b)));
 
     println!("{:?}", r)
 }
 
-fn count_occurances(v: &isize, b: &[isize]) -> isize {
+fn count_occurrences(v: &isize, b: &[isize]) -> isize {
     b.iter().filter(|&v1| *v1 == *v).count() as isize
 }
 
