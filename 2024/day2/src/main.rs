@@ -1,5 +1,5 @@
-use std::{fs, i32};
 use std::time::Instant;
+use std::{fs, i32};
 
 fn main() {
     let data = fs::read_to_string("./input.txt").expect("Couldn't read file.");
@@ -9,17 +9,13 @@ fn main() {
     problem1(&reports);
     println!("Elapsed time: {:.2?}", before.elapsed());
 
-
     before = Instant::now();
     problem2(&reports);
     println!("Elapsed time: {:.2?}", before.elapsed());
 }
 
 fn problem2(reports: &Vec<Vec<i32>>) {
-    let r = reports
-        .iter()
-        .filter(|r| check_report(r, 0))
-        .count();
+    let r = reports.iter().filter(|r| check_report(r, 0)).count();
 
     println!("{:?}", r)
 }
