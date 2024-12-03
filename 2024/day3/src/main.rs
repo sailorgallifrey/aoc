@@ -1,4 +1,4 @@
-use regex::Regex;
+use regex::{Match, Regex};
 use std::time::Instant;
 use std::fs;
 
@@ -27,13 +27,7 @@ fn problem2(data: &str) {
         }
         _ => {
             if include {
-                let nums: Vec<isize> = m
-                    .as_str()
-                    .replace("mul(", "")
-                    .replace(")", "")
-                    .split(",")
-                    .map(|n| n.parse::<isize>().unwrap())
-                    .collect();
+                let nums = parse_nums(m);
                 total += nums[0] * nums[1]
             }
         }
@@ -46,15 +40,20 @@ fn problem1(data: &str) {
     let r: isize = re
         .find_iter(data)
         .map(|m| {
-            let nums: Vec<isize> = m
-                .as_str()
-                .replace("mul(", "")
-                .replace(")", "")
-                .split(",")
-                .map(|n| n.parse::<isize>().unwrap())
-                .collect();
+            let nums: Vec<isize> = parse_nums(m);
             nums[0] * nums[1]
         })
         .sum();
     println!("{:?}", r);
+}
+
+fn parse_nums(m: Match) -> Vec<isize> {
+    let nums: Vec<isize> = m
+        .as_str()
+        .replace("mul(", "")
+        .replace(")", "")
+        .split(",")
+        .map(|n| n.parse::<isize>().unwrap())
+        .collect();
+    nums
 }
