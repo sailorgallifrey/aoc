@@ -6,16 +6,16 @@ fn main() {
     let reports: Vec<Vec<i32>> = parse_data(data);
 
     let mut before = Instant::now();
-    problem1(reports.clone());
+    problem1(&reports);
     println!("Elapsed time: {:.2?}", before.elapsed());
 
 
     before = Instant::now();
-    problem2(reports.clone());
+    problem2(&reports);
     println!("Elapsed time: {:.2?}", before.elapsed());
 }
 
-fn problem2(reports: Vec<Vec<i32>>) {
+fn problem2(reports: &Vec<Vec<i32>>) {
     let r = reports
         .iter()
         .filter(|r| check_report(r, 0))
@@ -56,7 +56,7 @@ fn check_report(r: &Vec<i32>, buffer_used: u8) -> bool {
     keep
 }
 
-fn problem1(reports: Vec<Vec<i32>>) {
+fn problem1(reports: &Vec<Vec<i32>>) {
     let r = reports
         .iter()
         .filter(|r| {

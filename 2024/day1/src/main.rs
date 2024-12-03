@@ -5,24 +5,24 @@ fn main() {
     let (a, b): (Vec<i32>, Vec<i32>) = parse_data(data);
 
 
-    problem1(a.clone(), b.clone());
-    problem2(a.clone(), b.clone());
+    problem1(&a, &b);
+    problem2(&a, &b);
 }
 
-fn problem2(a: Vec<i32>, b: Vec<i32>) {
+fn problem2(a: &Vec<i32>, b: &Vec<i32>) {
     let r: i32 = a.iter()
-        .fold(0i32, |r, v| r + (v *count_occurances(v, b.clone())));
+        .fold(0i32, |r, v| r + (v *count_occurances(v, b)));
 
     println!("{:?}", r)
 }
 
-fn count_occurances(v: &i32, b: Vec<i32>) -> i32 {
+fn count_occurances(v: &i32, b: &Vec<i32>) -> i32 {
     b.iter()
     .filter(|&v1| *v1 == *v)
     .count() as i32
 }
 
-fn problem1(a: Vec<i32>, b: Vec<i32>) {
+fn problem1(a: &Vec<i32>, b: &Vec<i32>) {
 
     let r: i32 = a.iter().enumerate()
         .fold(0i32, |r, (i, v)| r + (v - b[i]).abs());
