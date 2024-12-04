@@ -15,7 +15,7 @@ fn main() {
 }
 
 fn problem2(data: &str) {
-    let re = Regex::new(r"mul\(\d+,\d+\)|don't\(\)|do\(\)").unwrap();
+    let re = Regex::new(r"mul\(\d+,\d+\)|don't\(\)|do\(\)").expect("Failed to parse Regex");
     let mut total: isize = 0;
     let mut include: bool = true;
     re.find_iter(data).for_each(|m| match m.as_str() {
@@ -36,7 +36,7 @@ fn problem2(data: &str) {
 }
 
 fn problem1(data: &str) {
-    let re = Regex::new(r"mul\(\d+,\d+\)").unwrap();
+    let re = Regex::new(r"mul\(\d+,\d+\)").expect("Failed to parse Regex");
     let r: isize = re
         .find_iter(data)
         .map(|m| {
@@ -53,7 +53,7 @@ fn parse_nums(m: Match) -> Vec<isize> {
         .replace("mul(", "")
         .replace(")", "")
         .split(",")
-        .map(|n| n.parse::<isize>().unwrap())
+        .map(|n| n.parse::<isize>().expect("Failed to parse int"))
         .collect();
     nums
 }
