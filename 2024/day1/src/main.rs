@@ -33,7 +33,7 @@ fn parse_data(data: String) -> (Vec<isize>, Vec<isize>) {
     data.lines().for_each(|l| {
         let d: Vec<isize> = l
             .split_whitespace()
-            .map(|s| s.parse::<isize>().unwrap())
+            .map(|s| s.parse::<isize>().expect("Failed to parse int"))
             .collect();
         a.push(d[0]);
         b.push(d[1]);

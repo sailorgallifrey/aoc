@@ -90,7 +90,7 @@ fn parse_data(data: String) -> Vec<Vec<isize>> {
     data.lines()
         .map(|l| {
             l.split_whitespace()
-                .map(|s| s.parse::<isize>().unwrap())
+                .map(|s| s.parse::<isize>().expect("Failed to parse int"))
                 .collect()
         })
         .collect()
