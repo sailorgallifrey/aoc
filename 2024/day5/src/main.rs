@@ -29,17 +29,16 @@ fn problem2(data: &Data) {
         .iter().filter(|u| {
         for i in 0..u.len() {
             let n: usize = u[i];
-            let relative_locations: (Vec<usize>, Vec<usize>) = data.relative_location_map[&n].clone();
 
             for j in 0..u.len() {
                 if j == i {
                     continue;
                 }
 
-                if j < i && relative_locations.1.contains(&u[j]) {
+                if j < i && data.relative_location_map[&n].1.contains(&u[j]) {
                     return true;
                 }
-                if j > i && relative_locations.0.contains(&u[j]) {
+                if j > i && data.relative_location_map[&n].0.contains(&u[j]) {
                     return true;
                 }
             }
@@ -48,9 +47,7 @@ fn problem2(data: &Data) {
     }).map(|u| {
         let mut sorted: Vec<usize> = u.to_vec();
         sorted.sort_by(|u1, u2| {
-            let relative_locations_u1: (Vec<usize>, Vec<usize>) = data.relative_location_map[u1].clone();
-            let relative_locations_u2: (Vec<usize>, Vec<usize>) = data.relative_location_map[u2].clone();
-            if relative_locations_u1.0.contains(u2) || relative_locations_u2.1.contains(u1) {
+            if data.relative_location_map[u1].0.contains(u2) || data.relative_location_map[u2].1.contains(u1) {
                 cmp::Ordering::Less
             } else { cmp::Ordering::Greater }
         });
