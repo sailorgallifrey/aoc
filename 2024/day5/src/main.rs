@@ -8,11 +8,13 @@ struct Data {
 }
 
 fn main() {
+    let mut before = Instant::now();
     let s = fs::read_to_string("./input.txt").expect("Couldn't read file.");
     let data: Data = get_map(s);
+    println!("Parse File Elapsed Time {:.2?}", before.elapsed());
 
+    before = Instant::now();
     println!("Problem 1:");
-    let mut before = Instant::now();
     problem1(&data);
     println!("Elapsed time: {:.2?}", before.elapsed());
 
